@@ -17,22 +17,6 @@ def articles(request):
 
     return render(request, "articles.html", {"articles": articles})
 
-
-def index(request):
-    return render(request, "index.html")
-
-def register(request):
-    return(request, "register.html")
-
-def about(request):
-    return(request, "about.html")
-
-def projects(request):
-    return(request, "projects.html")
-
-def events(request):
-    return(request, "events.html")
-
 @login_required(login_url="user:login")
 def dashboard(request):
     articles = Article.objects.filter(author=request.user)
@@ -106,4 +90,32 @@ def addComment(request, id):
         newComment.save()
     return redirect(reverse("article:detail", kwargs={"id": id}))
 
+
+
+def index(request):
+    return render(request, "index.html")
+
+def register(request):
+    return(request, "register.html")
+
+def about(request):
+    return render(request, "about.html")
+
+def events(request):
+    return(request, "events.html")
+
+def IPD(request):
+    return render(request, "IPD.html")
+
+def Publications(request):
+    return render(request, "Publications.html")
+
+def Collaborators(request):
+    return render(request, "Collaborators.html")
+
+def Conferences(request):
+    return render(request, "Conferences.html")
+
+def Club(request):
+    return render(request, "RuTAG_Club.html")
 

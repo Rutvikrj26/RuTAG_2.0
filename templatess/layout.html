@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Rural Technology Action Group" name="RuTAG">
+    <title>RuTAG</title>
+</head>
+<body>  
+        {% include "includes/navbar.html" %}
+
+
+        <div style = "margin-top : 100px; margin-bottom:100px;" class = "container">
+                
+            {% if messages %}
+                
+                    {% for message in messages %}
+                    {% if message.tags == "info" %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                    {% else %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+                    {% endif %}
+
+
+                    {% endfor %}
+                
+                {% endif %}
+            {% block body %}
+            
+            {% endblock body %}
+
+</div>
+
+<footer class="top-space" id="footer">
+
+    <div class="footer1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 panel">
+                    <h3 class="panel-title">About RuTAG</h3>
+                    <div class="panel-body">
+                        <p>Lorem ipsum dolor amet, consectetur adipiscing elit. Aenean leo lectus sollicitudin convallis
+                            eget libero. Aliquam laoreet tellus ut libero semper, egestas velit malesuada. Sed non risus
+                            eget dolor amet vestibulum ullamcorper. Integer feugiat molestie.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 panel contact">
+                    <h4 class="panel-title">Developer Info</h4>
+                    <div class="panel-body">
+                        <p>Contact me for Web Development and ML projects</p>
+                        <ul>
+                            <li><i class="fa fa-phone"></i>1-123-345-6789</li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i> contact@webthemez.com</a></li>
+                            <li><i class="fa fa-flag"></i>123 Smith Drive, Baltimore, MD 21212</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 panel">
+                    <h3 class="panel-title">Follow me</h3>
+                    <div class="panel-body">
+                        <p class="follow-me-icons">
+                            <a href=""><i class="fa fa-twitter fa-2"></i></a>
+                            <a href=""><i class="fa fa-dribbble fa-2"></i></a>
+                            <a href=""><i class="fa fa-github fa-2"></i></a>
+                            <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                            <a href=""><i class="fa fa-youtube fa-2"></i></a>
+                            <a href=""><i class="fa fa-pinterest fa-2"></i></a>
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- /row of panels -->
+        </div>
+    </div>
+
+    <div class="footer2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 panel">
+                    <div class="panel-body">
+                        <p class="text-left">
+                            All the contents belong to RuTAG
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- /row of panels -->
+        </div>
+    </div>
+
+</footer>
+
+
+      <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="{% static 'js/bootstrap.min.js'%}"></script>
+      <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+
+    </body>
+</html>
