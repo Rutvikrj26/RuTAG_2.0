@@ -1,0 +1,10 @@
+Django
+django-ckeditor
+django-cleanup
+django-crispy-forms
+django-js-asset
+gunicorn
+dj-database-url
+requests
+psycopg2-binary
+whitenoise

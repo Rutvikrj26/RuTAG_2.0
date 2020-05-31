@@ -1,0 +1,1 @@
+web: gunicorn RuTAG.wsgi --log-file -
