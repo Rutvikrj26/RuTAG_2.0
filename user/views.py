@@ -58,6 +58,8 @@ def logoutUser(request):
     messages.success(request, "You have successfully Logged Out")
     return redirect("index")
 
+def index(request):
+    return render(request, "index.html")
 
 def Events(request):
     return render(request, "Events.html")

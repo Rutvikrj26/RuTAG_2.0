@@ -23,10 +23,9 @@ from article import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name= "index" ),
-    path('register/', views.register, name="Register"),
-    path('articles/', views.index, name="article.urls"),
+    path('about/', views.about, name="about"),
     path('articles/', include("article.urls")),
     path('user/', include("user.urls")),
     path('events/',include("events.urls")),
     path('projects/',include("projects.urls")),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -24,6 +24,15 @@ def index(request):
 def register(request):
     return(request, "register.html")
 
+def about(request):
+    return(request, "about.html")
+
+def projects(request):
+    return(request, "projects.html")
+
+def events(request):
+    return(request, "events.html")
+
 @login_required(login_url="user:login")
 def dashboard(request):
     articles = Article.objects.filter(author=request.user)

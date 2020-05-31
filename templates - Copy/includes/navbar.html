@@ -1,0 +1,46 @@
+{% load static %}
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'index'  %}"><img src="{% static 'img/logo (2).png' %}"></img>RuTAG I.I.T. Delhi</a>
+        
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'article:articles'  %}">Articles</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'projects:projects'  %}">Projects</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'events:events'  %}">Events</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'article:dashboard'  %}">Control panel</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:logout'  %}">Sign Out</a>
+          </li>
+          {% else %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:login'  %}">Login</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:register'  %}">Register</a>
+          </li>
+          {% endif %}
+          </ul>
+        </div>
+    
+    
+</nav>

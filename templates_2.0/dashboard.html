@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Control Panel</h3>
+<hr>
+<p>
+    Welcome, <small>{{request.user.username}}</small>
+</p>
+<hr>
+<a class = "btn btn-danger" href = "{% url 'article:addarticle' %}">Add Article </a>
+<a class = "btn btn-danger" href = "{% url 'events:addevent' %}">Add Event </a>
+<a class = "btn btn-danger" href = "{% url 'projects:addproject' %}">Add Project </a>
+<hr>
+{% if articles %}
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Writer</th>
+            <th scope="col">History</th>
+            <th scope="col">Update</th>
+            <th scope="col">Clear</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for article in articles %}
+          <tr>
+            <th scope="row">{{article.id}}</th>
+            <td><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></td>
+            <td>{{article.author.username}}</td>
+            <td>{{article.created_date}}</td>
+            <td><a href="{% url 'article:update' article.id %}" class = "btn btn-danger">Update</a></td>
+            <td><a href="{% url 'article:delete' article.id %}" class = "btn btn-danger">Clear</a> </td>
+              
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+{% else %}
+
+<div class = "alert alert-danger">
+    You have no articles yet...
+</div>
+
+{% endif %}
+
+
+{% if events %}
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Organizer</th>
+            <th scope="col">History</th>
+            <th scope="col">Update</th>
+            <th scope="col">Clear</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for event in events %}
+          <tr>
+            <th scope="row">{{event.id}}</th>
+            <td><a href="{% url 'event:detail' event.id %}">{{event.title}}</a></td>
+            <td>{{event.organizer.username}}</td>
+            <td>{{event.Event_date}}</td>
+            <td><a href="{% url 'event:update' event.id %}" class = "btn btn-danger">Update</a></td>
+            <td><a href="{% url 'event:delete' event.id %}" class = "btn btn-danger">Clear</a> </td>
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+{% else %}
+
+<div class = "alert alert-danger">
+    You have no events yet...
+
+</div>
+
+{% endif %}
+
+{% if projects %}
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Professor</th>
+            <th scope="col">History</th>
+            <th scope="col">Update</th>
+            <th scope="col">Clear</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for project in projects %}
+          <tr>
+            <th scope="row">{{project.id}}</th>
+            <td><a href="{% url 'project:detail' project.id %}">{{project.title}}</a></td>
+            <td>{{project.Professor.username}}</td>
+            <td>{{project.Project_date}}</td>
+            <td><a href="{% url 'project:update' project.id %}" class = "btn btn-danger">Update</a></td>
+            <td><a href="{% url 'project:delete' project.id %}" class = "btn btn-danger">Clear</a> </td>
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+{% else %}
+
+<div class = "alert alert-danger">
+    You have no Projects yet...
+
+</div>
+
+{% endif %}
+
+
+{% endblock body %}
+
