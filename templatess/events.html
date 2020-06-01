@@ -12,10 +12,21 @@
                 </div>
         </div>
 </div>
+<div class ="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-14">
+            <form>
+                 {% csrf_token %}
+                <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Search...">
+              <button type="submit" class="btn btn-danger">Search</button>
+            </form>
+      </div>
+    </div>
 
+</div>
 {% if events %}
 
-<div class="container-fluid">
+<div class="jumbotron">
 
 {% for event in events %}
 <div class="column">
@@ -59,7 +70,7 @@
         </div>
       </div>
       </div>
-
+</div>
 {% endfor %}
 
 {% else %}
@@ -73,6 +84,7 @@
 </div>
 </div>
 </div>
-{% endif %}
+
+    {% endif %}
 
 {% endblock body %}

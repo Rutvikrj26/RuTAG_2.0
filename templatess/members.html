@@ -13,20 +13,20 @@
         </div>
 </div>
 
-{% if Members %}
+{% if members %}
 
 <div class="container-fluid">
 
-{% for member in members %}
+{% for members in member %}
 <div class="column">
     <div class="col-md-24 offset-md-3">
 
 <div class="card" style="width: 18rem;">
-  <img src="{{member.image}}" class="card-img-top" alt="{{member.name}}">
+<a href="{% url 'members:members' member.id %}"><img class="card-img-top" src="{{member.image.url}}" alt=""></a>
   <div class="card-body">
-    <h5 class="card-title">{{member.name}}</h5>
-    <p class="card-text">{{member.detail}}.</p>
-    <a href="mailto:{{member.email}}" class="btn btn-primary">{{member.email}}</a>
+    <h5 class="card-title">{{members.name}}</h5>
+    <p class="card-text">{{members.detail}}.</p>
+    <a href="mailto:{{members.email}}" class="btn btn-primary">{{members.email}}</a>
   </div>
 </div>
 

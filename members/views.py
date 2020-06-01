@@ -33,10 +33,14 @@ def contactpage(request):
         return redirect('contact')
     return render(request, 'contact.html', {'form': form})
 
+def members(request):
+    member = Member.objects.all()
+    return render(request, "members.html", {"members": member})
+
 def core(request):
-    members = Member.objects.filter(position__contains = "RuTAG Club")
-    return render(request, "members.html", {"members": members})
+    member = Member.objects.filter(work = '0')
+    return render(request, "members.html", {"members": member})
 
 def club(request):
-    members = Member.objects.filter(position__contains = "Core")
-    return render(request, "members.html", {"members": members})
+    member = Member.objects.filter(work = '1')
+    return render(request, "members.html", {"members": member})
