@@ -31,21 +31,21 @@
 
 {% if projects %}
 
+<div class="jumbotron">
 
 {% for project in projects %}
 <div class="column">
-    <div class="col-md-12 offset-md-3">
+    <div class="col-md-24 offset-md-3">
 
     <!-- Post Content Column -->
     <div class="col-lg-8">
 
       <!-- Title -->
-      <a href="{% url 'project:detail' project.id %}"><h2 class="mt-4">{{project.title}}</h2></a>
-        
-      <!-- Author -->
+
+  <h1 class="display-4"><a href="{% url 'projects:project_detail' project.id %}">{{project.title}}</a></h1>
+        <!-- Author -->
       <p class="lead">
-        
-         Project Lead By {{project.professor}}
+         Project Leads : {{project.professor}}
       </p>
 
       <p class="lead">
@@ -56,30 +56,21 @@
         <!-- Location -->
       <p class="lead">
         
-         Student: {{project.student}}
+         Students : {{project.student}}
       </p>
         
       <hr>
-
-      <!-- Date/Time -->
-      <p>{{project.Project_date}}</p>
-      <p>{{project.status}}</p>
-      <hr>
       <!-- Preview Image -->
       {% if project.Project_poster %}
-      <a href="{% url 'project:detail' project.id %}"><img class="img-fluid rounded" src="{{project.Project_poster.url}}" alt=""></a>
+      <a href="{% url 'projects:project_detail' project.id %}"><img class="img-fluid rounded" src="{{project.Project_poster.url}}" alt=""></a>
       {% endif %}
-     
-
-      <hr>
 
       <!-- Post Content -->
       <p class="lead">
           {{project.content|safe|truncatewords:50}}
       </p>
 
-      <a style ="float : right;" href="{% url 'project:detail' project.id %}" class ="btn btn-danger">Read more...</a>
-      <hr>
+      <a style ="float : right;" href="{% url 'projects:project_detail' project.id %}" class ="btn btn-danger">Read more...</a>
          
         </div>
       </div>
@@ -87,30 +78,7 @@
 
 {% endfor %}
 
-
-{% for project in projects %}
-<div class="column">
-    <div class="col-md-12 offset-md-3">
-
-    <!-- Post Content Column -->
-    <div class="col-lg-8">
-
-      <!-- Title -->
-      <a href="{% url 'project:detail' project.id %}"><h2 class="mt-4">{{project.title}}</h2></a>
-
-      <!-- Post Content -->
-      <p class="lead">
-          {{project.content|safe|truncatewords:50}}
-      </p>
-
-      <a style ="float : right;" href="{% url 'project:detail' project.id %}" class ="btn btn-danger">Read more...</a>
-      <hr>
-
-        </div>
-      </div>
-      </div>
-
-{% endfor %}
+</div>
 
 
 {% else %}
@@ -127,6 +95,5 @@
 {% endif %}
 
 {% endblock body %}
-
 
 

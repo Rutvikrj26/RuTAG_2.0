@@ -6,6 +6,7 @@ class professor(models.Model):
     name = models.CharField(max_length=50, verbose_name="Name")
     department = models.CharField(max_length = 50, verbose_name='Expertise of Professor')
     email = models.EmailField(verbose_name='Email id')
+    profilepic = models.ImageField(verbose_name='Picture to be displayed on Website',null=True,blank=True)
     def __str__(self):
         return self.name
 
@@ -20,6 +21,7 @@ class student(models.Model):
     email = models.EmailField(verbose_name='Email id')
     position = models.CharField(max_length=50,choices=positions)
     member = models.CharField(max_length=50, choices=Club_Membership)
+    profilepic = models.ImageField(verbose_name='Picture to be displayed on Website',null=True, blank=True)
     def __str__(self):
         return self.name
 
@@ -27,18 +29,19 @@ class engineer(models.Model):
     name = models.CharField(max_length=50, verbose_name="Name")
     position = models.CharField(max_length=50, verbose_name='Position of the Engineer')
     email = models.EmailField(verbose_name='Email id')
+    profilepic = models.ImageField(verbose_name='Picture to be displayed on Website',null=True, blank=True)
     def __str__(self):
         return self.name
 
 class Project(models.Model):
     author = models.ForeignKey("auth.User",on_delete = models.CASCADE,verbose_name = "Writer")
-    professor = models.ForeignKey(professor,on_delete=models.CASCADE,verbose_name = "professors")
-    student = models.ForeignKey(student,on_delete=models.CASCADE,verbose_name= "students")
-    engineer = models.ForeignKey(engineer, on_delete=models.CASCADE, verbose_name="engineers")
+    professor = models.CharField(max_length=200,verbose_name = "professors")
+    student = models.CharField(max_length=200,verbose_name= "students")
+    engineer = models.CharField(max_length=200, verbose_name="engineers")
     title = models.CharField(max_length = 50,verbose_name = "Title")
-    content = RichTextField(verbose_name="Enter the Project proposal over here")
-    Project_poster = models.ImageField(blank = True,null = True,verbose_name="Add Photo to product")
-    Project_report = models.ImageField(blank=True, null=True, verbose_name="Add Report of project")
+    content = RichTextField(verbose_name="Enter the Project proposal/Abstract over here")
+    Project_poster = models.ImageField(blank = True,null = True,verbose_name="Add Photo of product")
+    Project_report = models.ImageField(blank=True, null=True, verbose_name="Add Report of project in pdf Format")
     status = models.CharField(max_length=50,choices=statuses)
     Project_date = models.DateField(verbose_name="Project Starting Date", null=True, blank=True)
     def __str__(self):

@@ -11,5 +11,8 @@ urlpatterns = [
     path('update/<int:id>', views.updateEvent, name="update"),
     path('delete/<int:id>', views.deleteEvent, name="delete"),
     path('', views.events, name="events"),
-
+    path('workshops', views.workshop, name="workshop"),
+    path('CoreGroupMeetings', views.cgm, name="cgm"),
+    path('Staff&PIMeetings', views.spm, name="spm"),
+    path('otherEvents', views.other, name= "other"),
 ]

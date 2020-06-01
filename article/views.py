@@ -3,7 +3,8 @@ from .forms import ArticleForm
 from .models import Article, Comment
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from projects.models import Project
+from events.models import Event
 
 # Create your views here.
 
@@ -19,12 +20,15 @@ def articles(request):
 
 @login_required(login_url="user:login")
 def dashboard(request):
+    projects = Project.objects.filter(author=request.user)
+    events = Event.objects.filter(author=request.user)
     articles = Article.objects.filter(author=request.user)
     context = {
-        "articles": articles
+        "projects": projects,
+        "article": articles,
+        "events": events
     }
     return render(request, "dashboard.html", context)
-
 
 @login_required(login_url="user:login")
 def addArticle(request):

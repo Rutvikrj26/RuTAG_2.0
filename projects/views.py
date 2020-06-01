@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, reverse
 from .forms import ProjectForm
-from .models import Project
+from .models import Project, student, professor
+from article.models import Article
+from events.models import Event
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -30,8 +32,12 @@ def register(request):
 @login_required(login_url="user:login")
 def dashboard(request):
     projects = Project.objects.filter(author=request.user)
+    events = Event.objects.filter(author=request.user)
+    articles = Article.objects.filter(author=request.user)
     context = {
-        "projects": projects
+        "projects": projects,
+        "article" : articles,
+        "events" : events
     }
     return render(request, "dashboard.html", context)
 
@@ -55,6 +61,7 @@ def detail(request, id):
     #project = Project.objects.filter(id = id).first()
     project = get_object_or_404(Project, id=id)
 
+    return render(request, "project_detail.html", {"projects": project})
 
 @login_required(login_url="user:login")
 def updateProject(request, id):

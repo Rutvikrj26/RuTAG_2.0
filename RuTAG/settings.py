@@ -25,7 +25,7 @@ SECRET_KEY = 'h=m6m6v^@vmbghkv@4-%*yd@#0jc8n2&n*qh@f8#64&7=h($p!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rutagg.herokuapp.com']
+ALLOWED_HOSTS = ['rutagg.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },

@@ -3,7 +3,8 @@ from .forms import EventForm
 from .models import Event
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from article.models import Article
+from projects.models import Project
 
 # Create your views here.
 
@@ -17,6 +18,56 @@ def events(request):
 
     return render(request, "events.html", {"events": events})
 
+def workshop(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        events = Event.objects.filter(title__contains=keyword)
+        return render(request, "events.html", {"events": events})
+    events = Event.objects.filter(Event_type = 'Workshop')
+
+    return render(request, "events.html", {"events": events})
+
+def cgm(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        events = Event.objects.filter(title__contains=keyword)
+        return render(request, "events.html", {"events": events})
+    events = Event.objects.filter(Event_type = 'Core Group Meeting')
+
+    return render(request, "events.html", {"events": events})
+
+def cm(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        events = Event.objects.filter(title__contains=keyword)
+        return render(request, "events.html", {"events": events})
+    events = Event.objects.filter(Event_type = 'Club Meeting')
+
+    return render(request, "events.html", {"events": events})
+
+def spm(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        events = Event.objects.filter(title__contains=keyword)
+        return render(request, "events.html", {"events": events})
+    events = Event.objects.filter(Event_type = 'Staff & PI Meetings')
+
+    return render(request, "events.html", {"events": events})
+
+def other(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        events = Event.objects.filter(title__contains=keyword)
+        return render(request, "events.html", {"events": events})
+    events = Event.objects.filter(Event_type = 'other Events')
+
+    return render(request, "events.html", {"events": events})
+
 
 def index(request):
     return render(request, "index.html")
@@ -26,12 +77,15 @@ def register(request):
 
 @login_required(login_url="user:login")
 def dashboard(request):
+    projects = Project.objects.filter(author=request.user)
     events = Event.objects.filter(author=request.user)
+    articles = Article.objects.filter(author=request.user)
     context = {
-        "events": events
+        "projects": projects,
+        "article" : articles,
+        "events" : events
     }
     return render(request, "dashboard.html", context)
-
 
 @login_required(login_url="user:login")
 def addEvent(request):

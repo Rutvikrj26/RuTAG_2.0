@@ -23,7 +23,7 @@
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'about'  %}">About <us></us></a>
+            <a class="nav-link" href="{% url 'about'  %}">About Us</a>
           </li>
 
           <li class="nav-item active">
@@ -41,10 +41,18 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'projects:projects'  %}">Projects</a>
           </li>
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Events
+        </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'events:cgm' %}">Core Group Meeting</a>
+    <a class="dropdown-item" href="{% url 'events:spm' %}">Staff & PI Meeting</a>
+    <a class="dropdown-item" href="{% url 'events:workshop' %}">Workshops</a>
+    <a class="dropdown-item" href="{% url 'events:other' %}">Other Events</a>
+  </div>
 
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'events:events'  %}">Events</a>
-          </li>
+</li>
           {% if request.user.is_authenticated %}
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'article:dashboard'  %}">Control panel</a>
