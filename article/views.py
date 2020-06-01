@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from projects.models import Project
 from events.models import Event
+from products.models import Product
 
 # Create your views here.
 
@@ -23,10 +24,12 @@ def dashboard(request):
     projects = Project.objects.filter(author=request.user)
     events = Event.objects.filter(author=request.user)
     articles = Article.objects.filter(author=request.user)
+    products = Product.objects.filter(author=request.user)
     context = {
         "projects": projects,
         "article": articles,
-        "events": events
+        "events": events,
+        "products": products
     }
     return render(request, "dashboard.html", context)
 

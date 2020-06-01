@@ -10,6 +10,7 @@
 <a class = "btn btn-danger" href = "{% url 'article:addarticle' %}">Add Article </a>
 <a class = "btn btn-danger" href = "{% url 'events:addevent' %}">Add Event </a>
 <a class = "btn btn-danger" href = "{% url 'projects:addproject' %}">Add Project </a>
+<a class = "btn btn-danger" href = "{% url 'products:addproduct' %}">Add Product </a>
 <hr>
 {% if articles %}
 <table class="table">
@@ -110,6 +111,38 @@
 
 <div class = "alert alert-danger">
     You have no Projects yet...
+
+</div>
+
+{% endif %}
+
+{% if products %}
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Update</th>
+            <th scope="col">Clear</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <th scope="row">{{product.id}}</th>
+            <td><a href="{% url 'products:product_detail' product.id %}">{{product.title}}</a></td>
+            <td><a href="{% url 'products:update' product.id %}" class = "btn btn-danger">Update</a></td>
+            <td><a href="{% url 'products:delete' product.id %}" class = "btn btn-danger">Clear</a> </td>
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+{% else %}
+
+<div class = "alert alert-danger">
+    You have no Products yet...
 
 </div>
 
