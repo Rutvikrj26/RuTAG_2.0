@@ -14,7 +14,7 @@ def events(request):
     if keyword:
         events = Event.objects.filter(title__contains=keyword)
         return render(request, "events.html", {"events": events})
-    events = Event.objects.all()
+    events = Event.objects.filter()
 
     return render(request, "events.html", {"events": events})
 
@@ -24,7 +24,7 @@ def workshop(request):
     if keyword:
         events = Event.objects.filter(title__contains=keyword)
         return render(request, "events.html", {"events": events})
-    events = Event.objects.filter(Event_type = 'Workshop')
+    events = Event.objects.filter(Event_type = '2')
 
     return render(request, "events.html", {"events": events})
 
@@ -34,7 +34,7 @@ def cgm(request):
     if keyword:
         events = Event.objects.filter(title__contains=keyword)
         return render(request, "events.html", {"events": events})
-    events = Event.objects.filter(Event_type = 'Core Group Meeting')
+    events = Event.objects.filter(Event_type = '0')
 
     return render(request, "events.html", {"events": events})
 
@@ -44,7 +44,7 @@ def cm(request):
     if keyword:
         events = Event.objects.filter(title__contains=keyword)
         return render(request, "events.html", {"events": events})
-    events = Event.objects.filter(Event_type = 'Club Meeting')
+    events = Event.objects.filter(Event_type = '1')
 
     return render(request, "events.html", {"events": events})
 
@@ -54,7 +54,7 @@ def spm(request):
     if keyword:
         events = Event.objects.filter(title__contains=keyword)
         return render(request, "events.html", {"events": events})
-    events = Event.objects.filter(Event_type = 'Staff & PI Meetings')
+    events = Event.objects.filter(Event_type = '3')
 
     return render(request, "events.html", {"events": events})
 
@@ -64,7 +64,7 @@ def other(request):
     if keyword:
         events = Event.objects.filter(title__contains=keyword)
         return render(request, "events.html", {"events": events})
-    events = Event.objects.filter(Event_type = 'other Events')
+    events = Event.objects.filter(Event_type = '4')
 
     return render(request, "events.html", {"events": events})
 
@@ -102,8 +102,8 @@ def addEvent(request):
 
 def detail(request, id):
     #event = Event.objects.filter(id = id).first()
-    event = get_object_or_404(Event, id=id)
-
+    events = get_object_or_404(Event, id=id)
+    return render(request, "event_detail.html",{"events": events})
 
 @login_required(login_url="user:login")
 def updateEvent(request, id):

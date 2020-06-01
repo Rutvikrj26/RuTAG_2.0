@@ -41,7 +41,7 @@ class Project(models.Model):
     title = models.CharField(max_length = 50,verbose_name = "Title")
     content = RichTextField(verbose_name="Enter the Project proposal/Abstract over here")
     Project_poster = models.ImageField(blank = True,null = True,verbose_name="Add Photo of product")
-    Project_report = models.ImageField(blank=True, null=True, verbose_name="Add Report of project in pdf Format")
+    Project_report = models.FileField(blank=True, null=True, verbose_name="Add Report of project in pdf Format")
     status = models.CharField(max_length=50,choices=statuses)
     Project_date = models.DateField(verbose_name="Project Starting Date", null=True, blank=True)
     def __str__(self):

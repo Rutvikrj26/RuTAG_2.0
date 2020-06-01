@@ -12,25 +12,24 @@
 <a class = "btn btn-danger" href = "{% url 'projects:addproject' %}">Add Project </a>
 <a class = "btn btn-danger" href = "{% url 'products:addproduct' %}">Add Product </a>
 <hr>
-{% if articles %}
+
+<div class="jumbotron">
+    <h4><b>Your Articles</b></h4>
+    {% if article %}
 <table class="table">
         <thead>
           <tr>
             <th scope="col">id</th>
             <th scope="col">Title</th>
-            <th scope="col">Writer</th>
-            <th scope="col">History</th>
             <th scope="col">Update</th>
             <th scope="col">Clear</th>
           </tr>
         </thead>
         <tbody>
-          {% for article in articles %}
+          {% for article in article %}
           <tr>
             <th scope="row">{{article.id}}</th>
             <td><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></td>
-            <td>{{article.author.username}}</td>
-            <td>{{article.created_date}}</td>
             <td><a href="{% url 'article:update' article.id %}" class = "btn btn-danger">Update</a></td>
             <td><a href="{% url 'article:delete' article.id %}" class = "btn btn-danger">Clear</a> </td>
               
@@ -46,16 +45,16 @@
 </div>
 
 {% endif %}
-
-
-{% if events %}
+</div>
+<p></p>
+<div class="jumbotron">
+    <h4><b>Your Events</b></h4>
+    {% if events %}
 <table class="table">
         <thead>
           <tr>
             <th scope="col">id</th>
             <th scope="col">Title</th>
-            <th scope="col">Organizer</th>
-            <th scope="col">History</th>
             <th scope="col">Update</th>
             <th scope="col">Clear</th>
           </tr>
@@ -65,8 +64,6 @@
           <tr>
             <th scope="row">{{event.id}}</th>
             <td><a href="{% url 'events:event_detail' event.id %}">{{event.title}}</a></td>
-            <td>{{event.organizer.username}}</td>
-            <td>{{event.Event_date}}</td>
             <td><a href="{% url 'events:update' event.id %}" class = "btn btn-danger">Update</a></td>
             <td><a href="{% url 'events:delete' event.id %}" class = "btn btn-danger">Clear</a> </td>
 
@@ -83,7 +80,10 @@
 </div>
 
 {% endif %}
-
+</div>
+<p></p>
+<div class="jumbotron">
+        <h4><b>Your Projects</b></h4>
 {% if projects %}
 <table class="table">
         <thead>
@@ -115,8 +115,11 @@
 </div>
 
 {% endif %}
-
+</div>
+<p></p>
+<div class="jumbotron">
 {% if products %}
+        <h4><b>Your Products</b></h4>
 <table class="table">
         <thead>
           <tr>
@@ -147,7 +150,7 @@
 </div>
 
 {% endif %}
-
+</div>
 
 {% endblock body %}
 

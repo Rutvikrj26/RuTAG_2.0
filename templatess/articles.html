@@ -32,6 +32,7 @@
 {% if articles %}
 
 {% for article in articles %}
+<div class="jumbotron">
 <div class="column">
     <div class="col-md-12 offset-md-3">
 
@@ -44,21 +45,19 @@
       <!-- Author -->
       <p class="lead">
         
-         Published By {{article.author.username}}
-      </p>
-
-      <hr>
+         Published By {{article.author.username}} on
 
       <!-- Date/Time -->
-      <p>{{article.created_date}}</p>
+      {{article.created_date}}</p>
       <hr>
-      <!-- Preview Image -->
+
+        <!-- Preview Image -->
       {% if article.article_image %}
       <a href="{% url 'article:detail' article.id %}"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt=""></a>
       {% endif %}
      
 
-      <hr>
+
 
       <!-- Post Content -->
       <p class="lead">
@@ -73,30 +72,7 @@
       </div>
 
 {% endfor %}
-
-{% for event in Events %}
-<div class="column">
-    <div class="col-md-12 offset-md-3">
-
-    <!-- Post Content Column -->
-    <div class="col-lg-8">
-
-      <!-- Title -->
-      <a href="{% url 'event:detail' event.id %}"><h2 class="mt-4">{{event.title}}</h2></a>
-
-      <!-- Post Content -->
-      <p class="lead">
-          {{event.content|safe|truncatewords:50}}
-      </p>
-
-      <a style ="float : right;" href="{% url 'article:detail' article.id %}" class ="btn btn-danger">Read more...</a>
-      <hr>
-
-        </div>
-      </div>
-      </div>
-
-{% endfor %}
+</div>
 
 
 {% else %}

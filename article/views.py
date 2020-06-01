@@ -123,6 +123,6 @@ def Collaborators(request):
 def Conferences(request):
     return render(request, "Conferences.html")
 
-def Club(request):
-    return render(request, "RuTAG_Club.html")
+def members(request):
+    return render(request, "members.html")
 

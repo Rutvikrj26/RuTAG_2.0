@@ -44,7 +44,7 @@ def addProduct(request):
         product = form.save(commit=False)
 
         product.author = request.user
-        Product.save()
+        product.save()
 
         messages.success(request, "Product Created Successfully!!!")
         return redirect("products:dashboard")

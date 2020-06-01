@@ -14,7 +14,7 @@
           <ul class="navbar-nav ml-auto">
 
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'Club'  %}">RuTAG Club</a>
+            <a class="nav-link" href="{% url 'contact'  %}">Contact us</a>
           </li>
 
           <li class="nav-item active">
@@ -49,6 +49,17 @@
     <a class="dropdown-item" href="{% url 'events:spm' %}">Staff & PI Meeting</a>
     <a class="dropdown-item" href="{% url 'events:workshop' %}">Workshops</a>
     <a class="dropdown-item" href="{% url 'events:other' %}">Other Events</a>
+  </div>
+
+</li>
+
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Team
+        </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'members:club' %}">RuTAG</a>
+    <a class="dropdown-item" href="{% url 'members:core' %}">RuTAG Club</a>
   </div>
 
 </li>

@@ -19,18 +19,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from article import views
+from members.views import contactpage
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name= "index" ),
     path('about', views.about, name="about"),
     path('Publications', views.Publications, name="Publications"),
-    path('Club', views.Club, name="Club"),
+    path('members/', include("members.urls")),
     path('Collaborators', views.Collaborators, name="Collaborators"),
     path('articles/', include("article.urls")),
     path('user/', include("user.urls")),
     path('events/',include("events.urls")),
     path('projects/',include("projects.urls")),
     path('products/',include("products.urls")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('contact', contactpage, name="contact")
+]
 
+from django.conf.urls.static import static
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
