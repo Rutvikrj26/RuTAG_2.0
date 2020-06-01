@@ -25,7 +25,7 @@ SECRET_KEY = 'h=m6m6v^@vmbghkv@4-%*yd@#0jc8n2&n*qh@f8#64&7=h($p!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rutagg.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['rutag.herokuapp.com','127.0.0.1']
 
 
 # Application definition
