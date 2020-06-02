@@ -18,12 +18,12 @@
 {% for organization in organizations %}
 <div class="card">
   <div class="card-header">
-    {{organization.type.1}}
+    {{organization.name}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{organization.name}}</h5>
-    <p class="card-text">{{organization.description}}</p>
-    <a href="mailto:{{organization.email}}" class="btn btn-primary">{{organization.contact}}</a>
+    <h5 class="card-title">{{organization.description}}</h5>
+    <p class="card-text">Person of <C></C>ontact for the organization : {{organization.contact}}</p>
+contact: <a href="mailto:{{organization.email}}" class="btn btn-primary">{{organization.contact}}</a>
   </div>
 </div>
     {% endfor %}

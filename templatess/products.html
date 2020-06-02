@@ -27,29 +27,23 @@
 
 
 {% if products %}
-
-
+<div class="jumbotron">
+<div class="row row-cols-1 row-cols-md-3">
 
 {% for product in products %}
-<div class="jumbotron">
-<div class="column">
-    <div class="col-md-12 offset-ml-3">
 
-        <div class="card mb-3" style="max-width: 1080px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-        <img class="card-img" src="{{product.Product_image.url}}" alt=""></a>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
+<div class="col mb-4">
+<div class="card">
+    <img src="{{product.Product_image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
           <h3 class="card-title" align="center"><a href="{% url 'products:product_detail' product.id %}">{{product.title}}</a></h3>
-        <p class="card-text"> {{product.content|safe|truncatewords:50}}</p>
-        <p class="card-text"><small class="text-muted">Organization: {{product.organization}}, </small></p>
-      </div>
+      <p class="card-text">{{product.content|safe|truncatewords:50}}</p>
+      <p class="card-footer"><small class="text-muted">Organization: {{product.organization}}</small>
+            <a style ="float : right;" href="{% url 'products:product_detail' product.id %}" class ="btn btn-danger">Read more...</a></p>
     </div>
   </div>
-</div>
-      <a style ="float : right;" href="{% url 'products:product_detail' product.id %}" class ="btn btn-danger">Read more...</a>
+
+
 
         </div>
       </div>
@@ -68,6 +62,7 @@
 </div>
 </div>
 </div>
+
 {% endif %}
 
 {% endblock body %}

@@ -96,7 +96,7 @@ def addEvent(request):
 
 
         messages.success(request, "Event Created Successfully!!!")
-        return redirect("events:dashboard")
+        return redirect("article:dashboard")
     return render(request, "addevent.html", {"form": form})
 
 
@@ -113,7 +113,7 @@ def updateEvent(request, id):
         event = form.save(commit=False)
 
         messages.success(request, "Event Successfully Updated")
-        return redirect("events:dashboard")
+        return redirect("article:dashboard")
 
     return render(request, "update.html", {"form": form})
 
@@ -126,7 +126,7 @@ def deleteEvent(request, id):
 
     messages.success(request, "Event Successfully Deleted")
 
-    return redirect("events:dashboard")
+    return redirect("article:dashboard")
 
 
 

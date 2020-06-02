@@ -43,4 +43,4 @@ def core(request):
 
 def club(request):
     member = Member.objects.filter(work = '1')
-    return render(request, "members.html", {"members": member})
+    return render(request, "club.html", {"members": member})

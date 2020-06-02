@@ -79,7 +79,7 @@ def addProduct(request):
         product.save()
 
         messages.success(request, "Product Created Successfully!!!")
-        return redirect("products:dashboard")
+        return redirect("article:dashboard")
     return render(request, "addproduct.html", {"form": form})
 
 
@@ -100,7 +100,7 @@ def updateProduct(request, id):
         product.save()
 
         messages.success(request, "Product Successfully Updated")
-        return redirect("products:dashboard")
+        return redirect("article:dashboard")
 
     return render(request, "update.html", {"form": form})
 
@@ -113,7 +113,7 @@ def deleteProduct(request, id):
 
     messages.success(request, "Product Successfully Deleted")
 
-    return redirect("products:dashboard")
+    return redirect("article:dashboard")
 
 
 

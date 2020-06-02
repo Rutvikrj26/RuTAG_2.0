@@ -3,6 +3,7 @@ from .forms import ProjectForm
 from .models import Project, student, professor
 from article.models import Article
 from events.models import Event
+from products.models import Product
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -32,12 +33,8 @@ def register(request):
 @login_required(login_url="user:login")
 def dashboard(request):
     projects = Project.objects.filter(author=request.user)
-    events = Event.objects.filter(author=request.user)
-    articles = Article.objects.filter(author=request.user)
     context = {
         "projects": projects,
-        "article" : articles,
-        "events" : events
     }
     return render(request, "dashboard.html", context)
 
@@ -53,7 +50,7 @@ def addProject(request):
         project.save()
 
         messages.success(request, "Project Created Successfully!!!")
-        return redirect("projects:dashboard")
+        return redirect("article:dashboard")
     return render(request, "addproject.html", {"form": form})
 
 
@@ -74,7 +71,7 @@ def updateProject(request, id):
         project.save()
 
         messages.success(request, "Project Successfully Updated")
-        return redirect("projects:dashboard")
+        return redirect("article:dashboard")
 
     return render(request, "update.html", {"form": form})
 
@@ -87,7 +84,7 @@ def deleteProject(request, id):
 
     messages.success(request, "Project Successfully Deleted")
 
-    return redirect("projects:dashboard")
+    return redirect("article:dashboard")
 
 
 
