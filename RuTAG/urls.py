@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 from article import views
 from members.views import contactpage
+from products.views import organizationsngo,organizationsgo, organizationsother
 
 
 urlpatterns = [
@@ -28,7 +29,9 @@ urlpatterns = [
     path('about', views.about, name="about"),
     path('Publications', views.Publications, name="Publications"),
     path('members/', include("members.urls")),
-    path('Collaborators', views.Collaborators, name="Collaborators"),
+    path('organizationsngo', organizationsngo, name="organizationsngo"),
+    path('organizationsgo', organizationsgo, name="organizationsgo"),
+    path('organizationsother', organizationsother, name="organizationsother"),
     path('articles/', include("article.urls")),
     path('user/', include("user.urls")),
     path('events/',include("events.urls")),

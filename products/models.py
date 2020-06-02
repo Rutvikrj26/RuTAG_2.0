@@ -6,6 +6,8 @@ class organization(models.Model):
     contact = models.CharField(max_length=200,verbose_name= "Person of Contact")
     email = models.EmailField(verbose_name="POC's Email id")
     profilepic = models.ImageField(verbose_name='Picture to be displayed on Website',null=True,blank=True)
+    type = models.CharField(max_length=50,choices=(('0', 'NGO'), ('1', 'Government Organizations'), ('2', 'Colleges')))
+    description = RichTextField()
     def __str__(self):
         return self.name
 

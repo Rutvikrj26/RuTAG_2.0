@@ -17,6 +17,38 @@ def products(request):
 
     return render(request, "products.html", {"products": products})
 
+def organizationsngo(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        organizations = organization.objects.filter(title__contains=keyword)
+        return render(request, "organizations.html", {"organizations": organizations})
+
+    organizations = organization.objects.filter(type = '0')
+
+    return render(request, "organizations.html", {"organizations": organizations})
+
+def organizationsgo(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        organizations = organization.objects.filter(title__contains=keyword)
+        return render(request, "organizations.html", {"organizations": organizations})
+
+    organizations = organization.objects.filter(type = '1')
+
+    return render(request, "organizations.html", {"organizations": organizations})
+
+def organizationsother(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        organizations = organization.objects.filter(title__contains=keyword)
+        return render(request, "organizations.html", {"organizations": organizations})
+
+    organizations = organization.objects.filter(type = '2')
+
+    return render(request, "organizations.html", {"organizations": organizations})
 
 def index(request):
     return render(request, "index.html")
