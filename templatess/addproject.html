@@ -10,7 +10,9 @@
         <form method = "post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.media}}
+            {{file_form.media}}
             {{form|crispy}}
+            {{file_form|crispy}}
             <br>
             <button type = "submit" class = "btn btn-danger">Add Project</button>
         </form>

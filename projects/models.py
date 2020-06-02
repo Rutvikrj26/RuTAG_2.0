@@ -33,20 +33,26 @@ class engineer(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Project(models.Model):
     author = models.ForeignKey("auth.User",on_delete = models.CASCADE,verbose_name = "Writer")
     professor = models.CharField(max_length=200,verbose_name = "professors")
     student = models.CharField(max_length=200,verbose_name= "students")
     engineer = models.CharField(max_length=200, verbose_name="engineers")
-    title = models.CharField(max_length = 50,verbose_name = "Title")
+    title = models.CharField(max_length = 500,verbose_name = "Title")
     content = RichTextField(verbose_name="Enter the Project proposal/Abstract over here")
-    Project_poster = models.ImageField(blank = True,null = True,verbose_name="Add Photo of product")
-    Project_report = models.FileField(blank=True, null=True, verbose_name="Add Report of project in pdf Format")
     status = models.CharField(max_length=50,choices=statuses)
     Project_date = models.DateField(verbose_name="Project Starting Date", null=True, blank=True)
+
     def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['-Project_date']
+
+class Projectreports(models.Model):
+    Project_report = models.FileField(verbose_name='Project Reports',null=True, blank=True)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE,null=True,blank=True)
+
 
