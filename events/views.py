@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, reverse
-from .forms import EventForm
+from .forms import EventForm, EventFileForm
 from .models import Event
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required

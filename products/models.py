@@ -14,10 +14,14 @@ class organization(models.Model):
 # Create your models here.
 class Product(models.Model):
     author = models.ForeignKey("auth.User",on_delete = models.CASCADE,verbose_name = "Writer")
-    organization = models.ForeignKey(organization,max_length=200,on_delete=models.CASCADE,verbose_name = "Associated Organization")
+    organization = models.ForeignKey(organization,max_length=200,on_delete=models.CASCADE,verbose_name = "Associated Organization", null=True, blank=True)
     title = models.CharField(max_length = 50,verbose_name = "Title")
     short = models.CharField(max_length=200, verbose_name="Short Description")
     content = RichTextField(verbose_name="Enter the Product description over here")
-    Product_image = models.ImageField(verbose_name="Enter one Product image")
+    Product_image = models.ImageField(verbose_name="Product Picture")
     def __str__(self):
         return self.title
+
+class product_image(models.Model):
+    Product_image = models.ImageField(verbose_name="Enter one Product image")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)

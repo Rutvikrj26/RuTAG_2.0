@@ -3,21 +3,18 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Product, organization
+from .models import Product, organization, product_image
 
 # Register your models here.
 
 admin.site.register(organization)
 
-@admin.register(Product)
-class ProjectAdmin(admin.ModelAdmin):
+class ProductimageInline(admin.TabularInline):
+    model = product_image
 
-    list_display = ["title","organization"]
+class ProductimageAdmin(admin.ModelAdmin):
+    inlines = [
+        ProductimageInline,
+    ]
 
-    list_display_links = ["title"]
-
-    search_fields = ["title"]
-
-    list_filter = ["organization"]
-    class Meta:
-        model = Product
+admin.site.register(Product, ProductimageAdmin)

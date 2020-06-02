@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, reverse
 from django.views.generic.edit import FormView
 from .forms import ProjectForm, FileProjectFormreport
-from .models import Project, student, professor, Projectreports
+from .models import Project, project_report
 from article.models import Article
 from events.models import Event
 from products.models import Product
@@ -41,7 +41,7 @@ def dashboard(request):
 @login_required(login_url="user:login")
 def addProject(request):
     form = ProjectForm(request.POST or None)
-    file_form = FileProjectFormreport(request.POST, request.FILES)
+    file_form = FileProjectFormreport(request.POST or None, request.FILES or None)
     reports = request.FILES.getlist('Project_report')
 
     if form.is_valid() and file_form.is_valid():
@@ -49,7 +49,7 @@ def addProject(request):
         project.author = request.user
         project.save()
         for report in reports:
-            Projectreport_instance = Projectreports(Project_report = report, Project = project)
+            Projectreport_instance = project_report(Project_report = report, Project = project)
             Projectreport_instance.save()
 
         messages.success(request, "Project Created Successfully!!!")
@@ -61,9 +61,9 @@ def addProject(request):
 def detail(request, id):
     #project = Project.objects.filter(id = id).first()
     project = get_object_or_404(Project, id=id)
+    reports = project_report.objects.filter(project = project)
 
-
-    return render(request, "project_detail.html", {"projects": project})
+    return render(request, "project_detail.html", {"projects": project, "reports" : reports})
 
 @login_required(login_url="user:login")
 def updateProject(request, id):
@@ -77,7 +77,7 @@ def updateProject(request, id):
         project.author = request.user
         project.save()
         for report in reports:
-            Projectreport_instance = Projectreports(Project_report = report, Project=project)
+            Projectreport_instance = project_report(Project_report = report, Project=project)
             Projectreport_instance.save()
 
         messages.success(request, "Project Created Successfully!!!")

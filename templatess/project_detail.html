@@ -39,32 +39,9 @@
 
     <h4>Project Proposal / Abstract :</h4>
       <!-- Post Content -->
-      <p class="lead">
+      <p class="lead" align="justify">
           {{projects.content|safe}}
       </p>
-<hr>
-
-        {% if projects.projectreports %}
-
-        {% for report in projects.reports %}
-
-        {{report}}
-        <iframe src="{{report.url}}" width="100%" height="500px">
-    </iframe>
-        <a style ="float : right;" href="{{report.url}}" class ="btn btn-danger">Project Report</a>
-        {% endfor %}
-      {% else %}
-<div class ="row">
-
-    <div class="col-md-10 offset-md-3">
-        <div class="col-lg-8">
-<div class = "alert alert-danger">
-   No Project Report Uploaded
-</div>
-</div>
-</div>
-</div>
-      {% endif %}
       </div>
 </div>
 

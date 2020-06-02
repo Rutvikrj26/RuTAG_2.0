@@ -11,11 +11,13 @@ class Event(models.Model):
     title = models.CharField(max_length = 50,verbose_name = "Title")
     content = RichTextField(verbose_name="Enter the Event Details Here")
     Event_date = models.DateTimeField(verbose_name="Event Date & time", blank=True,null=True)
-    Event_poster = models.FileField(blank = True,null = True,verbose_name="Add Photo to Event")
     Event_type = models.CharField(max_length=50,choices=Event_types)
-    Event_report = models.FileField(blank=True, null=True, verbose_name="Enter a combined document here")
     def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['-Event_date','-Event_type']
+
+class event_report(models.Model):
+    Event_report = models.FileField(blank=True, null=True, verbose_name="Enter the report here")
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)

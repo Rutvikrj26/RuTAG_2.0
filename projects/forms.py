@@ -1,12 +1,12 @@
 from django import forms
-from .models import Project, Projectreports
+from .models import Project, project_report
 from django.forms import ClearableFileInput
 
 from django import forms
 
 class FileProjectFormreport(forms.ModelForm):
     class Meta:
-        model = Projectreports
+        model = project_report
         fields = ["Project_report"]
         widgets = {
             'Project_report': ClearableFileInput(attrs={'multiple': True}),
