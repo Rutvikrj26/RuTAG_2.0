@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name= "index" ),
     path('about', views.about, name="about"),
+    path('newsletters',views.newsletters, name="newsletters"),
     path('Publications', views.Publications, name="Publications"),
     path('members/', include("members.urls")),
     path('organizationsngo', organizationsngo, name="organizationsngo"),

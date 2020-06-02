@@ -23,11 +23,12 @@ def newsletters(request):
     keyword = request.GET.get("keyword")
 
     if keyword:
-        articles = Newsletter.objects.filter(title__contains=keyword)
-        return render(request, "articles.html", {"articles": articles})
-    articles = Article.objects.all()
+        newsletters = Newsletter.objects.filter(title__contains=keyword)
+        return render(request, "newsletters.html", {"newsletters": newsletters})
+    newsletters = Newsletter.objects.all()
 
-    return render(request, "articles.html", {"articles": articles})
+    return render(request, "newsletters.html", {"newsletters": newsletters})
+
 
 @login_required(login_url="user:login")
 def dashboard(request):
