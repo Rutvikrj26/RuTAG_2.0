@@ -13,29 +13,25 @@
         </div>
 </div>
 
+
 {% if members %}
-
-<div class="container-fluid">
-
-{% for members in member %}
-<div class="column">
-    <div class="col-md-24 offset-md-3">
-
-<div class="card" style="width: 18rem;">
-<a href="{% url 'members:members' member.id %}"><img class="card-img-top" src="{{member.image.url}}" alt=""></a>
+<div class="row row-cols-1 row-cols-md-3">
+{% for member in members %}
+<div class="col mb-4">
+<div class="card">
+<img class="card-img-top" src="{{member.image.url}}" alt="">
   <div class="card-body">
-    <h5 class="card-title">{{members.name}}</h5>
-    <p class="card-text">{{members.detail}}.</p>
-    <a href="mailto:{{members.email}}" class="btn btn-primary">{{members.email}}</a>
+    <h5 class="card-title">{{member.name}}</h5>
+    <p class="card-text">{{member.detail}}.</p>
+<div class="card-footer">
+      <small class="text-muted"><a href="mailto:{{member.email}}" class="btn btn-primary"><h7 align="center">{{member.email}}</h7></a></small>
+    </div>
   </div>
 </div>
+</div>
 
-        </div>
-      </div>
-      </div>
-
-{% endfor %}
-
+    {% endfor %}
+</div>
 {% else %}
 <div class ="row">
 
@@ -47,6 +43,7 @@
 </div>
 </div>
 </div>
+
 {% endif %}
 
 {% endblock body %}

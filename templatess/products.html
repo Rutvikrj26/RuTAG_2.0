@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-          <h5 class="card-title"><a href="{% url 'products:product_detail' product.id %}">{{product.title}}</a></h5>
+          <h3 class="card-title" align="center"><a href="{% url 'products:product_detail' product.id %}">{{product.title}}</a></h3>
         <p class="card-text"> {{product.content|safe|truncatewords:50}}</p>
         <p class="card-text"><small class="text-muted">Organization: {{product.organization}}, </small></p>
       </div>
