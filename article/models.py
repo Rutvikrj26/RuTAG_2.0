@@ -1,4 +1,5 @@
 from django.db import models
+import django.utils.timezone
 from ckeditor.fields import RichTextField
 import datetime
 # Create your models here.
@@ -26,7 +27,7 @@ class Comment(models.Model):
 
 class Newsletter(models.Model):
     title = models.CharField(max_length=200, verbose_name= "Enter your news letter title here")
-    created_date = models.DateTimeField(verbose_name="Creation Date", default = datetime.datetime.now())
+    created_date = models.DateTimeField(verbose_name="Creation Date", default = django.utils.timezone.now())
 
 class newsletter_File(models.Model):
     Newsletter_file = models.FileField(verbose_name="files of Newsletter Field")
