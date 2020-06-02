@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Article,Comment
+from .models import Article,Comment,newsletter_File,Newsletter
 
 # Register your models here.
 
@@ -22,3 +22,12 @@ class ArticleAdmin(admin.ModelAdmin):
     class Meta:
         model = Article
 
+class NewsletterfileInline(admin.TabularInline):
+    model = newsletter_File
+
+class NewsletterfileAdmin(admin.ModelAdmin):
+    inlines = [
+        NewsletterfileInline,
+    ]
+
+admin.site.register(Newsletter, NewsletterfileAdmin)

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+<h5 align="center">Newsletters</h5>
+
+<div class ="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-14">
+            <form>
+                 {% csrf_token %}
+                <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Search...">
+              <button type="submit" class="btn btn-danger">Search</button>
+            </form>
+      </div>
+    </div>
+
+</div>
+
+{% if newsletters %}
+{% for newsletter in newsletters %}
+<div class="container">
+<ul>
+     <p align="justify">{{newsletter.content}}</p>
+</ul>
+    </div>
+{% endfor %}
+{% else %}
+<div class ="row">
+
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+<div class = "alert alert-danger">
+   No Newsletters Found
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+
+{% endblock body %}
+

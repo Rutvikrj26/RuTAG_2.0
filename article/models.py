@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+import datetime
 # Create your models here.
 
 class Article(models.Model):
@@ -22,3 +23,11 @@ class Comment(models.Model):
         return self.comment_content
     class Meta:
         ordering = ['-comment_date']
+
+class Newsletter(models.Model):
+    title = models.CharField(max_length=200, verbose_name= "Enter your news letter title here")
+    created_date = models.DateTimeField(verbose_name="Creation Date", default = datetime.datetime.now())
+
+class newsletter_File(models.Model):
+    Newsletter_file = models.FileField(verbose_name="files of Newsletter Field")
+    newsletter = models.ForeignKey(Newsletter, on_delete=models.CASCADE)
