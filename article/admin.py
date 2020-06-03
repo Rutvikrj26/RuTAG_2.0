@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Article,Comment,newsletter_File,Newsletter
+from .models import Article,Comment,newsletter_File,Newsletter,Video
 
 # Register your models here.
 
@@ -31,3 +31,5 @@ class NewsletterfileAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Newsletter, NewsletterfileAdmin)
+
+admin.site.register(Video)

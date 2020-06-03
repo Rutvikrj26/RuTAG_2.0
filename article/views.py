@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, reverse
 from .forms import ArticleForm
-from .models import Article, Comment, Newsletter, video
+from .models import Article, Comment, Newsletter, Video
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from projects.models import Project
@@ -9,9 +9,9 @@ from products.models import Product
 
 # Create your views here.
 
-def video(request):
-    videos = video.objects.all()
-    return render(request,"videos.html" ,{"videos" : videos})
+def videos(request):
+    video = Video.objects.all()
+    return render(request,"videos.html" ,{"videos" : video})
 
 def articles(request):
     keyword = request.GET.get("keyword")

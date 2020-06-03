@@ -38,6 +38,6 @@ class newsletter_File(models.Model):
     Newsletter_file = models.FileField(verbose_name="files of Newsletter Field")
     newsletter = models.ForeignKey(Newsletter, on_delete=models.CASCADE, related_name='files')
 
-class video(models.Model):
+class Video(models.Model):
     title = models.CharField(max_length=500, verbose_name="title of video being entered")
     description = RichTextField(max_length=500, verbose_name="description if you want to give")
