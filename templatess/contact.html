@@ -5,17 +5,44 @@
 {% load crispy_forms_tags %}
 
  <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-12 offset-ml-3">
         <h3>Contact us</h3>
         <hr>
         <form method = "post">
             {% csrf_token %}
-
             {{form|crispy}}
             <br>
             <button type = "submit" class = "btn btn-danger">Send</button>
         </form>
+
     </div>
   </div>
+        <p></p>
+<br>
+<br>
+<h5><b>For Technical Advice and Collaboration:</b></h5><br>
+         <p align="justify">
+             Prof. S. K. Saha, Coordinator and Principal Investigator (PI) <br>
+             Ph. 011-26591135<br>
+             E-mail: <a href="mailto:sahaiitd@gmail.com">sahaiitd@gmail.com</a>
+         </p>
+         <p align="justify">
+             Prof. M.R. Ravi, Co-PI  <br>
+             Ph. 011-26591059<br>
+             E-mail: <a href="mailto:ravimr.1964@gmail.com ">ravimr.1964@gmail.com </a>
+         </p>
+         <p align="justify">
+             Prof. Sangeeta Kohli, Co-PI<br>
+             Ph. 011-26591243<br>
+             E-mail: <a href="mailto:sangeeta.mrr@gmail.com">sangeeta.mrr@gmail.com</a>
+         </p><br>
+<h5><b>For General Queries:</b></h5><br>
+            <p>
+            Mr. Raj Kumar Gupta <br>
+            RuTAG-IIT Delhi Office
+            Ph. 011-26591385
+            E-mail: <a href="mailto:rajkumarddr@gmail.com">rajkumarddr@gmail.com</a>
+            </p>
+
 
 {% endblock body %}

@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from projects.models import Project
 from events.models import Event
 from products.models import Product
-
+from members.models import index_images
 # Create your views here.
 
 def videos(request):
@@ -115,7 +115,11 @@ def addComment(request, id):
 
 
 def index(request):
-    return render(request, "index.html")
+    images = index_images.objects.all()
+    number = []
+    for i in range(len(images)):
+        number.append(str(i))
+    return render(request, "index.html", {"images": images, "number":number } )
 
 def register(request):
     return(request, "register.html")

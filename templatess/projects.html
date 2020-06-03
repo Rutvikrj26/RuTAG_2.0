@@ -35,30 +35,32 @@
 {% for project in projects %}
 <div class="jumbotron">
 <div class="column">
-    <div class="col-md-24 offset-md-3">
+    <div class="col-md-12 offset-ml-3">
 
     <!-- Post Content Column -->
-    <div class="col-lg-8">
+    <div class="col-lg-12">
 
       <!-- Title -->
 
-  <h1 class="display-4"><a href="{% url 'projects:project_detail' project.id %}">{{project.title}}</a></h1>
+  <h3 class="display-4"><a href="{% url 'projects:project_detail' project.id %}">{{project.title}}</a></h3>
         <!-- Author -->
+{% if project.professor %}
       <p class="lead">
          Project Leads : {{project.professor}}
       </p>
-
+{% endif %}
+{% if project.engineer %}
       <p class="lead">
-
          Project Engineers : {{project.engineer}}
       </p>
-        
+{% endif %}
+
         <!-- Location -->
+{% if project.student %}
       <p class="lead">
-        
          Students : {{project.student}}
       </p>
-        
+{% endif %}
       <hr>
       <!-- Preview Image -->
       {% if project.Project_poster %}

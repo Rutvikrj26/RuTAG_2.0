@@ -16,7 +16,7 @@ levels = [(i,i) for i in range(8)]
 
 class Member(models.Model):
     name = models.CharField(max_length=50, verbose_name="Name of the Member")
-    position = models.CharField(max_length=50, choices=positions, verbose_name="position of the member")
+    position = models.CharField(max_length=50, verbose_name="position of the member")
     image = models.ImageField(verbose_name="Profile Picture of the Member", default='/static/default.jpg')
     detail = models.TextField(verbose_name="Some detail about the Member", null=True,blank=True)
     email = models.EmailField(verbose_name="email id of the member", default="rutagiitd@gmail.com")
@@ -25,4 +25,7 @@ class Member(models.Model):
     def __str__ (self):
         return self.name
 
-
+class index_images(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Title to be displayed on Index Page", null=True, blank=True)
+    description = models.CharField(max_length=200, verbose_name="short description to be added", null=True, blank=True)
+    images = models.ImageField(verbose_name="images to be displayed on index page", upload_to = 'static/img/')
