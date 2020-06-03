@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'h=m6m6v^@vmbghkv@4-%*yd@#0jc8n2&n*qh@f8#64&7=h($p!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['rutag.herokuapp.com','127.0.0.1']
 
@@ -80,7 +80,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'RuTAG.wsgi.application'
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'Deny'
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
