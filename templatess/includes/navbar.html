@@ -40,17 +40,6 @@
             <a class="nav-link" href="{% url 'article:articles'  %}">Articles</a>
           </li>
 
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'newsletters'  %}">NewsLetters</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'projects:projects'  %}">Projects</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'products:products'  %}">Innovative Product Delivery</a>
-          </li>
 <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Events
@@ -74,7 +63,29 @@
   </div>
 
 </li>
-          {% if request.user.is_authenticated %}
+
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'newsletters'  %}">NewsLetters</a>
+          </li>
+
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink-4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Projects
+        </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'projects:proposed' %}">proposed</a>
+    <a class="dropdown-item" href="{% url 'projects:in_pipeline' %}">In Pipeline</a>
+    <a class="dropdown-item" href="{% url 'projects:completed' %}">Completed</a>
+    <a class="dropdown-item" href="{% url 'projects:executed' %}">Tested and Deployed</a>
+  </div>
+
+</li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'products:products'  %}">Innovative Product Delivery</a>
+          </li>
+<!--          {% if request.user.is_authenticated %}
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'article:dashboard'  %}">Control panel</a>
           </li>
@@ -91,7 +102,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'user:register'  %}">Register</a>
           </li>
-          {% endif %}
+          {% endif %}  -->
           </ul>
         </div>
     

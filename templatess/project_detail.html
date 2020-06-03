@@ -7,16 +7,22 @@
     <div class="col-lg-12">
 
       <!-- Title -->
-      <h3>{{projects.title}}</h3>
+      <h3 align="center">{{projects.title}}</h3>
 <hr>
       <!-- Author -->
 
       <p></p>
+      {% if projects.professor %}
         Associated Professors : {{projects.professor}}
+      {% endif %}
       <p></p>
+      {% if projects.engineer %}
         Associated Engineers : {{projects.engineer}}
+      {% endif %}
       <p></p>
+      {% if projects.student %}
         Associated Students : {{projects.student}}
+      {% endif %}
 
 
       <hr>
@@ -24,18 +30,8 @@
       <!-- Preview Image -->
       {% if projects.Project_poster %}
 <img class="img-fluid rounded" src="{{projects.Project_poster.url}}" alt="">
-      {% else %}
-    <div class="col-md-10 offset-md-3">
-        <div class="col-lg-8">
-<div class = "alert alert-danger">
-   No Product Image Uploaded.
-</div>
-</div>
-</div>
-
       {% endif %}
 
-      <hr>
 
     <h4>Project Proposal / Abstract :</h4>
       <!-- Post Content -->

@@ -20,8 +20,8 @@
 <div class="row row-cols-1 row-cols-md-3">
 {% for member in members %}
 <div class="col mb-4">
-<div class="card">
-<img class="card-img-top" src="{{member.image.url}}" alt="">
+<div class="card" style="height: 500;width: 200">
+<img class="card-img-top" src="{{member.image.url}}" alt="" height="200" width="200">
   <div class="card-body">
     <h5 class="card-title">{{member.name}}</h5>
     <p class="card-text">{{member.detail}}.</p>

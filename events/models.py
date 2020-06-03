@@ -6,11 +6,11 @@ Event_types = (('0', 'Core Group Meeting'),('1', 'Club Meeting'),('2', 'Workshop
 
 class Event(models.Model):
     author = models.ForeignKey("auth.User",on_delete = models.CASCADE,verbose_name = "Writer")
-    organizer = models.CharField(max_length=50,verbose_name = "Organizer")
-    location = models.CharField(max_length=100,verbose_name= "Location where the event was held")
-    title = models.CharField(max_length = 50,verbose_name = "Title")
+    organizer = models.CharField(max_length=500,verbose_name = "Organizer",null=True, blank=True)
+    location = models.CharField(max_length=1000,verbose_name= "Location where the event was held")
+    title = models.CharField(max_length = 500,verbose_name = "Title")
     content = RichTextField(verbose_name="Enter the Event Details Here")
-    Event_date = models.DateTimeField(verbose_name="Event Date & time", blank=True,null=True)
+    Event_date = models.DateTimeField(verbose_name="Event Date & time")
     Event_type = models.CharField(max_length=50,choices=Event_types)
     def __str__(self):
         return self.title

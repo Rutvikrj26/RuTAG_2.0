@@ -38,9 +38,10 @@ def members(request):
     return render(request, "members.html", {"members": member})
 
 def core(request):
-    member = Member.objects.filter(work = '0')
+    member = Member.objects.filter(work = '0').order_by('-level')
     return render(request, "members.html", {"members": member})
 
 def club(request):
-    member = Member.objects.filter(work = '1')
+    member = Member.objects.filter(work = '1').order_by('-level')
+    
     return render(request, "club.html", {"members": member})

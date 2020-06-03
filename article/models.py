@@ -1,7 +1,6 @@
 from django.db import models
 import django.utils.timezone
 from ckeditor.fields import RichTextField
-import datetime
 # Create your models here.
 
 class Article(models.Model):
@@ -26,9 +25,19 @@ class Comment(models.Model):
         ordering = ['-comment_date']
 
 class Newsletter(models.Model):
-    title = models.CharField(max_length=200, verbose_name= "Enter your news letter title here")
-    created_date = models.DateTimeField(verbose_name="Creation Date", default = django.utils.timezone.now())
+    title = models.CharField(max_length=200, verbose_name= "Enter your news letter title here", null=True, blank=True)
+    created_date = models.DateTimeField(verbose_name="Creation Date", null=True, blank=True)
+    description = RichTextField()
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-created_date']
 
 class newsletter_File(models.Model):
     Newsletter_file = models.FileField(verbose_name="files of Newsletter Field")
-    newsletter = models.ForeignKey(Newsletter, on_delete=models.CASCADE)
+    newsletter = models.ForeignKey(Newsletter, on_delete=models.CASCADE, related_name='files')
+
+class video(models.Model):
+    title = models.CharField(max_length=500, verbose_name="title of video being entered")
+    description = RichTextField(max_length=500, verbose_name="description if you want to give")

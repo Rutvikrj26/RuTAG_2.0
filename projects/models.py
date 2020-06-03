@@ -12,7 +12,7 @@ class professor(models.Model):
 
 
 positions = (('1', 'undergrad 1st-year'),('2','undergrad 2nd-year'),('3','undergrad 3rd-year'),('4','undergrad 4th-year'),('5','Masters 1st-year'),('6','Masters 2nd-year'), ('7','pHD'))
-statuses = (('1', 'Proposed'),('2','in Pipeline'),('3','completed'), ('4','Executed'))
+statuses = (('0', 'Proposed'),('1','in Pipeline'),('2','completed'), ('3','Executed'))
 Club_Membership = (('0', 'Yes'),('1', 'No'))
 
 class student(models.Model):

@@ -21,10 +21,11 @@
     {{organization.name}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">Person of Contact for the organization : {{organization.contact}}</h5>
+    <h5 class="card-title">{{organization.description|safe}}</h5>
 contact: <a href="mailto:{{organization.email}}" class="btn btn-primary">{{organization.contact}}</a>
   </div>
 </div>
+<p></p>
     {% endfor %}
 
 {% else %}

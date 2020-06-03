@@ -20,6 +20,45 @@ def projects(request):
 
     return render(request, "projects.html", {"projects": projects})
 
+def proposed(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        projects = Project.objects.filter(title__contains=keyword)
+        return render(request, "projects.html", {"projects": projects})
+    projects = Project.objects.filter(Project.status == '0')
+
+    return render(request, "projects.html", {"projects": projects})
+
+def in_pipeline(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        projects = Project.objects.filter(title__contains=keyword)
+        return render(request, "projects.html", {"projects": projects})
+    projects = Project.objects.filter(Project.status == '1')
+
+    return render(request, "projects.html", {"projects": projects})
+
+def completed(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        projects = Project.objects.filter(title__contains=keyword)
+        return render(request, "projects.html", {"projects": projects})
+    projects = Project.objects.filter(Project.status == '2')
+
+    return render(request, "projects.html", {"projects": projects})
+
+def executed(request):
+    keyword = request.GET.get("keyword")
+
+    if keyword:
+        projects = Project.objects.filter(title__contains=keyword)
+        return render(request, "projects.html", {"projects": projects})
+    projects = Project.objects.filter(Project.status == '3')
+
+    return render(request, "projects.html", {"projects": projects})
 
 def index(request):
     return render(request, "index.html")

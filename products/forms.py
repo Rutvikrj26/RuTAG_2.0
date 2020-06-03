@@ -14,4 +14,4 @@ class ProductForm(forms.ModelForm):
 class organizationForm(forms.ModelForm):
     class Meta:
         model = organization
-        fields = ["name","contact","email","profilepic"]
+        fields = ["name","contact","email"]
