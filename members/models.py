@@ -28,4 +28,4 @@ class Member(models.Model):
 class index_images(models.Model):
     title = models.CharField(max_length=100, verbose_name="Title to be displayed on Index Page", null=True, blank=True)
     description = models.CharField(max_length=200, verbose_name="short description to be added", null=True, blank=True)
-    images = models.ImageField(verbose_name="images to be displayed on index page", upload_to = 'static/img/')
+    images = models.ImageField(verbose_name="images to be displayed on index page")
