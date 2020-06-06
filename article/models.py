@@ -25,7 +25,7 @@ class Comment(models.Model):
         ordering = ['-comment_date']
 
 class Newsletter(models.Model):
-    title = models.CharField(max_length=200, verbose_name= "Enter your news letter title here", null=True, blank=True)
+    title = models.CharField(max_length=200, verbose_name= "Enter your news letter title here")
     created_date = models.DateTimeField(verbose_name="Creation Date", null=True, blank=True)
     description = RichTextField()
     def __str__(self):
