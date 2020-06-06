@@ -2,25 +2,19 @@
 
 {% block body %}
 
-{% load crispy_forms_tags %}
-
- <div class="row">
-    <div class="col-md-12 offset-ml-3">
-        <h3>Contact us</h3>
-        <hr>
-        <form method = "post">
-            {% csrf_token %}
-            {{form|crispy}}
-            <br>
-            <button type = "submit" class = "btn btn-danger">Send</button>
-        </form>
-
-    </div>
-  </div>
-        <p></p>
 <br>
-<br>
+
 <h5><b>For Technical Advice and Collaboration:</b></h5><br>
+
+{% if contacts %}
+{% for contact in contacts %}
+<p align="justify">{{contact.name}}, {{contact.position}}<br>
+             {{contact.phone}}<br>
+             E-mail: <a href="mailto:{{contact.email}}">{{contact.email}}</a>
+</p>
+{% endfor %}
+{% endif %}
+<!--
          <p align="justify">
              Prof. S. K. Saha, Coordinator and Principal Investigator (PI) <br>
              Ph. 011-26591135<br>
@@ -44,5 +38,5 @@
             E-mail: <a href="mailto:rajkumarddr@gmail.com">rajkumarddr@gmail.com</a>
             </p>
 
-
+-->
 {% endblock body %}

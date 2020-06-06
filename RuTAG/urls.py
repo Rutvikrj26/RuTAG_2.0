@@ -19,17 +19,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from article import views
-from members.views import contactpage
+from members.views import contactpage, about, publications
 from products.views import organizationsngo,organizationsgo, organizationsother
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name= "index" ),
-    path('about', views.about, name="about"),
+    path('about', about, name="about"),
     path('videos', views.videos, name="videos"),
     path('newsletters',views.newsletters, name="newsletters"),
-    path('Publications', views.Publications, name="Publications"),
+    path('Publications', publications, name="Publications"),
     path('members/', include("members.urls")),
     path('organizationsngo', organizationsngo, name="organizationsngo"),
     path('organizationsgo', organizationsgo, name="organizationsgo"),

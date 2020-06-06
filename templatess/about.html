@@ -12,6 +12,13 @@
         <header class="page-header">
             <h1 class="page-title">About us</h1>
         </header>
+        {% if writeup %}
+        {% for material in writeup %}
+            <h3>{{material.question}}</h3>
+        <p align="justify">{{material.answer|safe}}</p>
+        {% endfor %}
+        {% endif %}
+        <!--
         <h3>Why RuTAG? </h3>
         <p align="justify">Although a lot of technologies developed by the rural people in India and elsewhere in the World may be
             available but often the problem is in taking them to other users or downsizing them, if necessary. Normally
@@ -114,7 +121,7 @@
         <li>Technology delivery for non-farm/ agriculture sectors.</li>
         <li>Benefiting rural groups through network of NGOs.</li>
         <li>Adding value to the produce and enhancing quality of rural life.</li>
-
+-->
     </article>
     <!-- /Article -->
 
@@ -124,10 +131,16 @@
         <div class="panel">
             <h4>Latest News</h4>
             <ul class="list-unstyled list-spaces">
-<p align="justify">
-    Media coverage of a Design Competition announced by RuTAG IIT Delhi
-</p>
-<ol type="1">
+                <ol type="1">
+
+                {% if news %}
+                {% for new in news %}
+                <li>{{new.title}}, published in {{new.paper}} on {{new.date}}. For more information, check out the <a href="{{new.url}}">news clipping</a></li>
+        {% endfor %}
+                {% endif %}
+
+                <!--
+
     <li> IIT design helps rural women in fabrication of beads, Published in The Hindu on July 8, 2019 at Jaipur. For
         more information [<a href="", style="color: #00ff00"><a href="", style="color: #00ff00">Click here</a></a>]
     </li>
@@ -208,9 +221,12 @@
         </div>
 
     </aside>
-    <!-- /Sidebar -->
-
+    -->
+                    <!-- /Sidebar -->
+                </ol>
+            </ul>
 </div>
+    </aside>
 </div>    <!-- /container -->
 
 {% endblock body %}

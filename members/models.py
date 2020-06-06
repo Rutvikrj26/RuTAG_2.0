@@ -1,10 +1,11 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class contact(models.Model):
     name = models.CharField(max_length=50, verbose_name="name of the person contacting")
     email = models.EmailField(verbose_name="email of the person contacting")
-    query = models.CharField(max_length=1000, verbose_name="Query of the person")
-    date = models.DateTimeField(auto_now_add=True, verbose_name="Date & Time of Querying")
+    position = models.CharField(max_length=100, verbose_name="Query of the person", null=True, blank=True)
+    phone = models.CharField(max_length=25,verbose_name="Phone number of the Contact", null=True, blank= True)
 
 
 positions = (('0','RuTAG Club - trainee'), ('1','RuTAG Club - Project Member'), ('2', 'RuTAG Club - Project Leader'),
@@ -29,3 +30,25 @@ class index_images(models.Model):
     title = models.CharField(max_length=100, verbose_name="Title to be displayed on Index Page", null=True, blank=True)
     description = models.CharField(max_length=200, verbose_name="short description to be added", null=True, blank=True)
     images = models.ImageField(verbose_name="images to be displayed on index page")
+    def __str__(self):
+        return self.title
+
+
+class news(models.Model):
+    title = models.CharField(max_length= 200, verbose_name="Heading of the News Clipping")
+    paper = models.CharField(max_length= 100, verbose_name="Name of the Newspaper in which the Article was posted")
+    date = models.DateField(verbose_name="Date of the News Publishing", null = True, blank = True)
+    url = models.URLField(max_length=500, verbose_name="URL of the paper", null =True, blank = True)
+    def __str__(self):
+        return self.title
+
+class writeup(models.Model):
+    question = models.CharField(max_length=100, verbose_name="Question that is to be answered")
+    answer = RichTextField(verbose_name = "Answer to the question")
+    def __str__(self):
+        return self.question
+
+class publication(models.Model):
+    title = models.CharField(max_length=500, verbose_name="Title of the paper")
+    date = models.DateField(verbose_name="Date of publication")
+    DOI = models.CharField(max_length=100, verbose_name="DOI")
